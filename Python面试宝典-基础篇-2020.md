@@ -321,6 +321,7 @@ typedef struct _object {
 
  `match`方法是从字符串的起始位置进行正则表达式匹配，返回`Match`对象或None。`search`方法会扫描整个字符串来找寻匹配的模式，同样也是返回Match对象或None。
 
+
 #### 题目010：下面这段代码的执行结果是什么。
 
 ```Python
