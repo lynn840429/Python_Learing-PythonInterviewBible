@@ -571,6 +571,8 @@ print(Parent.x, Child1.x, Child2.x)
 
 > **点评**：运行上面的代码首先输出`1 1 1`，这一点大家应该没有什么疑问。接下来，通过`Child1.x = 2`给类`Child1`重新绑定了属性`x`并赋值为`2`，所以`Child1.x`会输出`2`，而`Parent`和`Child2`并不受影响。执行`Parent.x = 3`会重新给`Parent`类的`x`属性赋值为`3`，由于`Child2`的`x`属性继承自`Parent`，所以`Child2.x`的值也是`3`；而之前我们为`Child1`重新绑定了`x`属性，那么它的`x`属性值不会受到`Parent.x = 3`的影响，还是之前的值`2`。
 
+`为Child1重新绑定了x属性，那么它的x属性值不会受到Parent.x = 3的影响，还是之前的值2。`
+
 ```
 1 1 1
 1 2 1
@@ -670,6 +672,57 @@ def which_day(year, month, date):
 #### 题目24：函数参数`*arg`和`**kwargs`分别代表什么？
 
 Python中，函数的参数分为位置参数、可变参数、关键字参数、命名关键字参数。`*args`代表可变参数，可以接收`0`个或任意多个参数，当不确定调用者会传入多少个位置参数时，就可以使用可变参数，它会将传入的参数打包成一个元组。`**kwargs`代表关键字参数，可以接收用`参数名=参数值`的方式传入的参数，传入的参数的会打包成一个字典。定义函数时如果同时使用`*args`和`**kwargs`，那么函数可以接收任意参数。
+
+https://skylinelimit.blogspot.com/2018/04/python-args-kwargs.html
+```Python
+def plus(*nums):
+    res = 0
+    for i in nums:
+        res += i
+    return res
+```
+```Python
+dt = {'sep': ' # ', 'end': '\n\n'}
+print('hello', 'world', **dt)
+# 等同於 print('hello', 'world', sep=' # ', end='\n\n')
+```
+```Python
+def fun(**_settings):
+    print(_settings)
+
+fun(name='Sky', attack=100, hp=500)
+# {'name': 'Sky', 'attack': 100, 'hp': 500}
+```
+```Python
+def fun(**settings):
+    settings.setdefault('name', 'Hello')
+    settings.setdefault('attack', 50)
+    settings.setdefault('defense', 0)
+    settings.setdefault('hp', 150)
+    print(settings)
+
+fun(name='Sky', attack=100, hp=500)
+# {'name': 'Sky', 'attack': 100, 'defense': 0, 'hp': 500}
+```
+```Python
+def fun(*args, **kwargs):
+    print(args, kwargs, sep='\n')
+```
+```Python
+def fun(a, b=20, *, kw1, kw2=40):
+    print(a, b, kw1, kw2)
+
+fun(1, 2, kw1=3, kw2=4)  # 1 2 3 4
+fun(10, kw1=30)  # 10 20 30 40
+# 在傳入引數時，在 * 後面的（kw1 和 kw2）一定要以關鍵字引數（指名）傳入
+```
+```Python
+def fun(a, *args, kw1, **kwargs):
+    print(a, args, kw1, kwargs, sep=' # ')
+
+fun(1, 2, 3, 4, 5, kw1=6, g=7, f=8, l=9)
+# 1 # (2, 3, 4, 5) # 6 # {'g': 7, 'f': 8, 'l': 9}
+```
 
 #### 题目25：写一个记录函数执行时间的装饰器。
 
