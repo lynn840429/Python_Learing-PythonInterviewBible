@@ -11,4 +11,4 @@ def change_money(total, c1=2, c2=3, c3=5):
 
 
 #print(change_money(10))
-print(change_money(6, 2, 3, 5))
+print(change_money(99, 2, 3, 5))
