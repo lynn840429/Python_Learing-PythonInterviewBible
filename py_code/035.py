@@ -24,6 +24,7 @@ class PrimeIter:
             while not is_prime(self.current):
                 self.current += 1
             self.counter += 1
+            # print(self.current)
             return self.current
         raise StopIteration()
 

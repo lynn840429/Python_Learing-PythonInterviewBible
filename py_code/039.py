@@ -1,25 +1,32 @@
-"""
+
 def extend_list(val=0, items=[]):
+    # items = []
     items.append(val)
     return items
 
 list1 = extend_list(10)
 print(list1)
-list2 = extend_list(123, [])
-list3 = extend_list('a')
-list4 = extend_list(456, [])
-list5 = extend_list(20)
-list6 = extend_list()
-list7 = extend_list(items=[789])
-print(list1)
-print(list2)
-print(list3)
-print(list4)
-print(list5)
-print(list6)
-print(list7)
-"""
 
+list2 = extend_list(123, [])
+print(list2)
+
+list3 = extend_list('a')
+print(list3)
+
+list4 = extend_list(456, [])
+print(list4)
+
+list5 = extend_list(20)
+print(list5)
+
+list6 = extend_list()
+print(list6)
+
+list7 = extend_list(items=[789])
+print(list7)
+
+
+"""
 fish = 6
 while True:
     total, enough = fish, True
@@ -33,3 +40,4 @@ while True:
         print(fish)
         break
     fish += 5
+"""

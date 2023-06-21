@@ -19,6 +19,7 @@ class D(B, C):
 
 item = D()
 item.who()
+print('\n')
 print(D.__mro__)
 
 #---------------------------------
@@ -40,5 +41,10 @@ class B(Y, Z):
 class M(A, B, Z):
     pass
 
+class N(B, A, Z): # Z->Y->X->A->B->N
+    pass
+
 # python2.3以后的版本里，MRO都是通过 C3 linearization 的方法计算
+print('\n')
 print(M.mro())
+print(N.mro())
